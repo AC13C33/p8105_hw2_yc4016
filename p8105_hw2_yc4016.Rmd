@@ -1,0 +1,8 @@
+---
+title: "p8105_hw2_yc4016"
+output: github_document
+date: "2022-09-27"
+author: "Yishan Chen"
+---
+
+
