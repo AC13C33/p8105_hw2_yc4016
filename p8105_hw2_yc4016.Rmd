@@ -24,3 +24,10 @@ hw2p1_df =
     ada) %>% 
   mutate(entry = ifelse(entry == "YES", TRUE, FALSE))
 ```
+
+
+##### Description 
+
+These data are not "tidy", becasue the route number is not a sigle varible. So we need to convert `route` variables from wide to long format. This will be useful when focusing on specific routes, but may not be necessary when considering questions that focus on station-level variables. 
+
+
