@@ -38,3 +38,14 @@ hw2p1_df %>%
 ```
 
 The ode chunk selects station name and line, and then uses `distinct()` to obtain all unique combinations. As a result, the number of rows in this dataset is the number of unique stations.
+
+
+```{r}
+hw2p1_df %>% 
+  filter(ada == TRUE) %>% 
+  select(station_name, line) %>% 
+  distinct
+```
+
+Filter according to ADA compliance as an initial step. This produces a dataframe in which the number of rows is the number of ADA compliant stations. 
+
