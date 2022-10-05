@@ -81,6 +81,8 @@ hw2p1_df %>%
 
 Lastly, we write a code chunk to identify stations that serve the A train, and to assess how many of these are ADA compliant. As a first step, we tidy the data as alluded to previously; that is, we convert `route` from wide to long format. After this step, we can use tools from previous parts of the question (filtering to focus on the A train, and on ADA compliance; selecting and using `distinct` to obtain dataframes with the required stations in rows).
 
+##### Description 
+
 * There are 465 distinct stations
 * There are 84 stations are ADA compliant
 * The proportion of station entrances / exits without vending allow entrance is 0.37
@@ -107,6 +109,10 @@ mr_trash_wheel=
     relocate(dataset)
 ```
 
+##### Description
+
+* The size of the dataset are `r nrow(mr_trash_wheel)` rows and `r ncol(mr_trash_wheel)` columns.
+* The name of variables are `r names(mr_trash_wheel)`. 
 
 
 ### Read in and clean dataset professor_trash_wheel
@@ -120,6 +126,11 @@ professor_trash_wheel=
   mutate(dataset = "professor_trash_wheel")%>% 
   relocate(dataset)
 ```
+
+##### Description
+
+* The size of the dataset are `r nrow(professor_trash_wheel)` rows and `r ncol(professor_trash_wheel)` columns.
+* The name of variables are `r names(professor_trash_wheel)`. 
 
 
 ### Combine datasets Mr_Trash_Wheel and Professor_Trash_Wheel
@@ -139,7 +150,26 @@ mr_trash_wheel_2020 =
 ##### Description 
 
 * The size of the dataset are `r nrow(combine)` rows and `r ncol(combine)` columns.
+* There are 641 observations. 
 * The name of variables are `r names(combine)`. 
 * The total weight of trash collected by Professor Trash Whee is `r sum(pull(professor_trash_wheel,weight))`
 * The total number of sports balls collected by Mr. Trash Wheel in 2020 is `r sum(pull(mr_trash_wheel_2020, sports_balls))`
+
+
+# Problem 3
+
+### Read in and clean dataset pols-month.
+
+```{r, pols_month}
+pols_month = 
+  read_csv("data/fivethirtyeight_datasets/pols-month.csv") %>% 
+  janitor::clean_names() %>% 
+  separate(mon, into = c("year", "month", "day"), sep = "-" ) %>% 
+  mutate(
+    year = as.numeric(year),
+    month= month.name[as.numeric(month)],
+    president = ifelse(prez_dem == 1, "demoncratic", "republican")) %>% 
+  select(-day, -prez_dem, -prez_gop)
+```
+
 
