@@ -172,6 +172,13 @@ pols_month =
   select(-day, -prez_dem, -prez_gop)
 ```
 
+##### Description
+
+* The size of the dataset are `r nrow(pols_month)` rows and `r ncol(pols_month)` columns.
+* The name of variables are `r names(pols_month)`. 
+* The dimension of data is `r dim(pols_month)`.
+* The range of years is `r range(pull(pols_month, year))`.
+
 ### Read in and clean dataset snp.
 
 ```{r, snp}
@@ -186,6 +193,15 @@ snp =
     month = month.name[as.numeric(month)] ) %>% 
   relocate(year, month)
 ```
+
+##### Description
+
+* The size of the dataset are `r nrow(snp)` rows and `r ncol(snp)` columns.
+* The name of variables are `r names(snp)`. 
+* The dimension of data is `r dim(snp)`.
+* The range of years is `r range(pull(snp, year))`.
+
+
 
 ### Read in and clean dataset unemployment
 
@@ -202,6 +218,14 @@ unemployment =
     month = month.name[as.numeric(month)])
 ```
 
+##### Description
+
+* The size of the dataset are `r nrow(unemployment)` rows and `r ncol(unemployment)` columns.
+* The name of variables are `r names(unemployment)`. 
+* The dimension of data is `r dim(unemployment)`.
+* The range of years is `r range(pull(unemployment, year))`.
+
+
 ### Join dataset pols_month, snp, and unemployment
 
 ```{r}
@@ -211,4 +235,12 @@ pols_month_snp =
 pols_month_snp_unemployment =
   left_join(pols_month_snp, unemployment, by = c("year", "month"))
 ```
+
+##### Description
+
+* The size of the dataset are `r nrow(pols_month_snp_unemployment)` rows and `r ncol(pols_month_snp_unemployment)` columns.
+* The names of key variables are `r names(pols_month_snp_unemployment)`
+* The dimension of data is `r dim(pols_month_snp_unemployment)`.
+* The range of years is `r range(pull(pols_month_snp_unemployment, year))`.
+
 
