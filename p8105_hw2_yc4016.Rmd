@@ -187,4 +187,18 @@ snp =
   relocate(year, month)
 ```
 
+### Read in and clean dataset unemployment
+
+```{r}
+unemployment = 
+  read_csv("data/fivethirtyeight_datasets/unemployment.csv") %>% 
+  janitor::clean_names() %>%
+  pivot_longer(
+    jan:dec,
+    names_to =  "month",
+    values_to = "unemployment_value") %>% 
+  mutate(
+    month = recode(month, "jan" = 1,"feb" = 2, "mar" = 3, "apr" = 4, "may" = 5, "jun" = 6, "jul" = 7, "aug" = 8, "sep" = 9, "oct" = 10, "nov" = 11, "dec" = 12),
+    month = month.name[as.numeric(month)])
+```
 
