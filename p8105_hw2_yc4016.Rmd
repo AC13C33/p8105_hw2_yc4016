@@ -202,3 +202,13 @@ unemployment =
     month = month.name[as.numeric(month)])
 ```
 
+### Join dataset pols_month, snp, and unemployment
+
+```{r}
+pols_month_snp =
+  left_join(pols_month, snp, by = c("year", "month"))
+
+pols_month_snp_unemployment =
+  left_join(pols_month_snp, unemployment, by = c("year", "month"))
+```
+
