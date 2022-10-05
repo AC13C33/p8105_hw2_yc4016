@@ -90,6 +90,22 @@ Lastly, we write a code chunk to identify stations that serve the A train, and t
 
 
 
+# Problem 2 
+
+### Read in and clean dataset mr_trash_wheel
+
+```{r, mr_trash_wheel}
+mr_trash_wheel= 
+  read_excel("data/Trash Wheel Collection Data.xlsx", sheet = 1, range = "A2:N549") %>% 
+  janitor::clean_names() %>% 
+  rename(weight = weight_tons, volume = volume_cubic_yards) %>% 
+  drop_na(dumpster) %>% 
+  mutate(
+    sports_balls = as.integer(sports_balls),
+    dataset = "mr_trash_wheel",
+    dumpster = as.numeric(dumpster))%>% 
+    relocate(dataset)
+```
 
 
 
