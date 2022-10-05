@@ -129,6 +129,17 @@ combine=
   bind_rows(mr_trash_wheel, professor_trash_wheel)
 ```
 
+```{r}
+mr_trash_wheel_2020 =
+  mr_trash_wheel %>% 
+  filter(year == 2020)
+```
 
 
+##### Description 
+
+* The size of the dataset are `r nrow(combine)` rows and `r ncol(combine)` columns.
+* The name of variables are `r names(combine)`. 
+* The total weight of trash collected by Professor Trash Whee is `r sum(pull(professor_trash_wheel,weight))`
+* The total number of sports balls collected by Mr. Trash Wheel in 2020 is `r sum(pull(mr_trash_wheel_2020, sports_balls))`
 
